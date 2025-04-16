@@ -3,6 +3,8 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+  push:
+    branches: [master]
 
 # Make sure the GITHUB_TOKEN has permission to upload to our releases
 permissions:
