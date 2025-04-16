@@ -25,7 +25,7 @@ public class firstplugin extends JavaPlugin {
     public void onDisable() {
         super.onDisable();
         // 3.
-        // This method will be called on server shutdown
+        // This method will be called on server shutdown.
         getLogger().info("FirstPlugin is disabled!");
     }
 }
