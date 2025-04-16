@@ -29,12 +29,14 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: |
+        mvn -B package --file pom.xml
+        ls /home/runner/work/coolplugin/coolplugin/target
     - name: Upload artifact
       uses: actions/upload-artifact@v4.6.2
       with:
         name: Final jar
-        path: /home/runner/work/coolplugin/coolplugin/target/firstplugin/firstplugin.jar
+        path: /home/runner/work/coolplugin/coolplugin/target/firstplugin.jar
       
       
 
