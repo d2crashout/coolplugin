@@ -16,7 +16,7 @@ public class firstplugin extends JavaPlugin {
     public void onEnable() {
         // This method will be called on plugin enable
         // 2.
-        getLogger().info("Your first plugin has been enabled!");
+        getLogger().info("FirstPlugin has been enabled!");
 
         getLogger().severe("Test error message. Its all okay.");
     }
@@ -26,6 +26,6 @@ public class firstplugin extends JavaPlugin {
         super.onDisable();
         // 3.
         // This method will be called on server shutdown
-        getLogger().info("Your first plugin is being disabled!");
+        getLogger().info("FirstPlugin is disabled!");
     }
 }
