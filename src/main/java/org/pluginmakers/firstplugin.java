@@ -14,7 +14,7 @@ public class firstplugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // This method will be called on plugin enable
+        // This method will be called on plugin enable.
         // 2.
         getLogger().info("FirstPlugin has been enabled!");
 
