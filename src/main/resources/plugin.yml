@@ -1,0 +1,5 @@
+name: FirstPlugin
+version: 1.0.1-SNAPSHOT
+main: org.pluginmakers.firstplugin
+author: SageFlame161810
+api-version: 1.21.4
