@@ -3,3 +3,16 @@ version: 1.0.1-SNAPSHOT
 main: org.pluginmakers.firstplugin
 author: SageFlame161810
 api-version: 1.21.4
+
+commands:
+    fly:
+      description: Makes you fly
+      aliases:
+        - flight
+        - f
+
+    healthscale:
+      permission: "tutorial.healthscale"
+      description: Changes the max amount of hearts you have
+      aliases:
+        - hs

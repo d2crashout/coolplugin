@@ -1,6 +1,8 @@
 package org.pluginmakers;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.pluginmakers.commands.FlyCommand;
+import org.pluginmakers.commands.HealthScaleCommand;
 
 public class firstplugin extends JavaPlugin {
 
@@ -18,7 +20,10 @@ public class firstplugin extends JavaPlugin {
         // 2.
         getLogger().info("FirstPlugin has been enabled!");
 
-        getLogger().severe("Test error message. Its all okay.");
+        getServer().getPluginManager().registerEvents(new MyListener(), this);
+
+        getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("healthscale").setExecutor(new HealthScaleCommand());
     }
 
     @Override
