@@ -10,7 +10,7 @@ import org.codehaus.plexus.util.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 public class HealthScaleCommand implements CommandExecutor {
-    private static final String INVALID_ARGUMENTS_MESSAGE = ChatColor.YELLOW + "Please only enter numbers from 1-40!";
+    private static final String INVALID_ARGUMENTS_MESSAGE = ChatColor.YELLOW + "Please only enter numbers from 1-20!";
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
 
@@ -24,7 +24,6 @@ public class HealthScaleCommand implements CommandExecutor {
             return true;
         }
 
-        // /healthscale 6
         String heartsArgument = args[0];
 
         if (!(StringUtils.isNumeric(heartsArgument))) {
@@ -32,14 +31,16 @@ public class HealthScaleCommand implements CommandExecutor {
             return true;
         }
 
-        int hearts = Integer.parseInt(heartsArgument);
+        int Hearts = Integer.parseInt(heartsArgument);
 
-        if (hearts <=0 || hearts > 40) {
+        if (Hearts <=0 || Hearts > 20) {
             player.sendMessage(INVALID_ARGUMENTS_MESSAGE);
             return true;
         }
 
         // input is valid
+
+        int hearts = Hearts * 2;
 
         player.setHealthScale(hearts);
         player.sendMessage(ChatColor.GREEN + "Your health scale has been adjusted!");

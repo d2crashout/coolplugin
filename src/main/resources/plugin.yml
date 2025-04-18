@@ -16,3 +16,6 @@ commands:
       description: Changes the max amount of hearts you have
       aliases:
         - hs
+
+    todo:
+      description: Add and remove todo items

@@ -3,6 +3,7 @@ package org.pluginmakers;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.pluginmakers.commands.FlyCommand;
 import org.pluginmakers.commands.HealthScaleCommand;
+import org.pluginmakers.commands.TodoCommand;
 
 public class firstplugin extends JavaPlugin {
 
@@ -10,8 +11,8 @@ public class firstplugin extends JavaPlugin {
     public void onLoad() {
         // 1.
         // This method will be called on load. NOT ENABLE
-
         getLogger().info("FirstPlugin has loaded!");
+        saveDefaultConfig();
     }
 
     @Override
@@ -24,6 +25,9 @@ public class firstplugin extends JavaPlugin {
 
         getCommand("fly").setExecutor(new FlyCommand());
         getCommand("healthscale").setExecutor(new HealthScaleCommand());
+        getCommand("todo").setExecutor(new TodoCommand());
+
+
     }
 
     @Override
