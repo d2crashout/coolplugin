@@ -1,6 +1,6 @@
-package org.pluginmakers;
+package org.pluginmakers.listeners;
 
-import io.papermc.paper.event.block.BlockBreakBlockEvent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,8 +8,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.pluginmakers.firstplugin;
 
-public class MyListener implements Listener {
+public class MainListener implements Listener {
     private final firstplugin plugin = JavaPlugin.getPlugin(firstplugin.class);
 
     @EventHandler
@@ -19,7 +20,7 @@ public class MyListener implements Listener {
         // Gets the greeting message from config
         final String greetingMessage = plugin.getConfig().getString("Greeting-Message");
         // Sends a message to the player
-        player.sendMessage(greetingMessage + " " + player.getName());
+        event.getPlayer().sendMessage(MiniMessage.miniMessage().deserialize(greetingMessage));
         // Remove join message
         event.setJoinMessage(null);
     }
@@ -27,7 +28,11 @@ public class MyListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         final Player player = event.getPlayer();
-        player.sendMessage(ChatColor.RED + "You can't break blocks here!");
-        event.setCancelled(true);
+
+        if (!player.hasPermission("myplugin.breakblocks")) {
+            player.sendMessage(ChatColor.RED + "You can't break blocks here!");
+            event.setCancelled(true);
+
+        }
     }
 }

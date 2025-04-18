@@ -1,11 +1,34 @@
 package org.pluginmakers;
 
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.pluginmakers.commands.FlyCommand;
-import org.pluginmakers.commands.HealthScaleCommand;
-import org.pluginmakers.commands.TodoCommand;
+import org.jetbrains.annotations.NotNull;
+import org.pluginmakers.commands.*;
+import org.pluginmakers.listeners.*;
+import org.pluginmakers.placeholders.DateTimePlaceholder;
 
 public class firstplugin extends JavaPlugin {
+
+    private void registerListeners() {
+        @NotNull PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new MainListener(), this);
+        pm.registerEvents(new PapiListener(), this);
+        pm.registerEvents(new ChatListener(), this);
+        pm.registerEvents(new InventoryListener(), this);
+    }
+
+    private void registerCommands() {
+        getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("healthscale").setExecutor(new HealthScaleCommand());
+        getCommand("testplaceholders").setExecutor(new PapiTestCommand(this));
+        getCommand("killgui").setExecutor(new KillCommand());
+    }
+
+    public void registerCustomPlaceholders() {
+        new DateTimePlaceholder(this).register();
+    }
 
     @Override
     public void onLoad() {
@@ -19,13 +42,23 @@ public class firstplugin extends JavaPlugin {
     public void onEnable() {
         // This method will be called on plugin enable.
         // 2.
+
+        final Plugin papi = Bukkit.getPluginManager().getPlugin("PlaceholderAPI");
+
         getLogger().info("FirstPlugin has been enabled!");
 
-        getServer().getPluginManager().registerEvents(new MyListener(), this);
+        registerListeners();
+        registerCommands();
+        registerCustomPlaceholders();
 
-        getCommand("fly").setExecutor(new FlyCommand());
-        getCommand("healthscale").setExecutor(new HealthScaleCommand());
-        getCommand("todo").setExecutor(new TodoCommand());
+        if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI") || papi == null || !papi.isEnabled()) {
+            // Here is PAPI is not on the server
+            Bukkit.getConsoleSender().sendRichMessage("<red>PlaceholderAPI plugin is needed!");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        // Here if PAPI is on the server
 
 
     }
@@ -37,4 +70,5 @@ public class firstplugin extends JavaPlugin {
         // This method will be called on server shutdown.
         getLogger().info("FirstPlugin is disabled!");
     }
+
 }

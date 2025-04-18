@@ -1,21 +1,49 @@
 name: FirstPlugin
-version: 1.0.1-SNAPSHOT
+version: 1.0-SNAPSHOT
 main: org.pluginmakers.firstplugin
 author: SageFlame161810
 api-version: 1.21.4
 
+softdepend: [PlaceholderAPI]
+
 commands:
     fly:
+      permission: "firstplugin.fly"
       description: Makes you fly
       aliases:
         - flight
         - f
 
     healthscale:
-      permission: "tutorial.healthscale"
+      permission: "firstplugin.healthscale"
       description: Changes the max amount of hearts you have
       aliases:
         - hs
 
-    todo:
-      description: Add and remove todo items
+    testplaceholders:
+      permission: "firstplugin.testing"
+      description: Test any or all custom placeholders
+      aliases:
+        - testp
+        - ptest
+        - placeholdertest
+
+    killgui:
+
+
+permissions:
+  firstplugin.breakblocks:
+    description: Allows breaking blocks
+    default: op
+
+  firstplugin.testing:
+    description: Allows permission to testing commands
+    default: op
+
+  firstplugin.healthscale:
+    description: Allows you to change your health using the /healthscale command
+    default: op
+
+  firstplugin.fly:
+    description: Allows you to use the /fly command
+    default: op
