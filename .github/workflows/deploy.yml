@@ -4,8 +4,7 @@ name: 'Release and deploy to github.'
 on:
   release:
     types: [published]
-  workflow_dispatch:
-  
+    
 # Make sure the GITHUB_TOKEN has permission to upload to our releases
 permissions:
   contents: write
