@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.pluginmakers.commands.*;
 import org.pluginmakers.listeners.*;
-import org.pluginmakers.placeholders.DateTimePlaceholder;
+import org.pluginmakers.placeholders.*;
 
 public class firstplugin extends JavaPlugin {
 
@@ -17,6 +17,8 @@ public class firstplugin extends JavaPlugin {
         pm.registerEvents(new PapiListener(), this);
         pm.registerEvents(new ChatListener(), this);
         pm.registerEvents(new InventoryListener(), this);
+        pm.registerEvents(new BlockBreakListener(), this);
+        pm.registerEvents(new JoinListener(), this);
     }
 
     private void registerCommands() {
@@ -24,6 +26,7 @@ public class firstplugin extends JavaPlugin {
         getCommand("healthscale").setExecutor(new HealthScaleCommand());
         getCommand("testplaceholders").setExecutor(new PapiTestCommand(this));
         getCommand("killgui").setExecutor(new KillCommand());
+        getCommand("skin").setExecutor(new SkinChangeCommand());
     }
 
     public void registerCustomPlaceholders() {
@@ -35,13 +38,13 @@ public class firstplugin extends JavaPlugin {
         // 1.
         // This method will be called on load. NOT ENABLE
         getLogger().info("FirstPlugin has loaded!");
-        saveDefaultConfig();
     }
 
     @Override
     public void onEnable() {
         // This method will be called on plugin enable.
         // 2.
+        saveDefaultConfig();
 
         final Plugin papi = Bukkit.getPluginManager().getPlugin("PlaceholderAPI");
 
@@ -57,10 +60,7 @@ public class firstplugin extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
-
         // Here if PAPI is on the server
-
-
     }
 
     @Override

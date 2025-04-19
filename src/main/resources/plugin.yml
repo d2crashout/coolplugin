@@ -7,28 +7,34 @@ api-version: 1.21.4
 softdepend: [PlaceholderAPI]
 
 commands:
-    fly:
-      permission: "firstplugin.fly"
-      description: Makes you fly
-      aliases:
-        - flight
-        - f
+  fly:
+    permission: "firstplugin.fly"
+    description: Makes you fly
+    aliases:
+      - flight
+      - f
 
-    healthscale:
-      permission: "firstplugin.healthscale"
-      description: Changes the max amount of hearts you have
-      aliases:
-        - hs
+  healthscale:
+    permission: "firstplugin.healthscale"
+    description: Changes the max amount of hearts you have
+    aliases:
+      - hs
 
-    testplaceholders:
-      permission: "firstplugin.testing"
-      description: Test any or all custom placeholders
-      aliases:
-        - testp
-        - ptest
-        - placeholdertest
+  testplaceholders:
+    permission: "firstplugin.testing"
+    description: Test any or all custom placeholders
+    aliases:
+      - testp
+      - ptest
+      - placeholdertest
 
-    killgui:
+  killgui:
+    permission: "firstplugin.testing"
+    description: Opens a gui that can kill you
+
+  skin:
+    description: Change your skin
+    usage: /skin <playername>
 
 
 permissions:

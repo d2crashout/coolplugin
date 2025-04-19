@@ -1,4 +1,4 @@
-package org.pluginmakers.test;
+package org.pluginmakers.menu.customMenus;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;

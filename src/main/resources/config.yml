@@ -1,1 +1,3 @@
-Greeting-Message: "<green>Welcome to the server!"
+custom-message: true # Put true if you want custom player join messages, and set the message at the next config
+custom-message-string: Hello # Don't put a punctuation mark at the end of this sentence
+greeting-message: Welcome!
