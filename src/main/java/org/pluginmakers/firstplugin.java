@@ -11,6 +11,16 @@ import org.pluginmakers.placeholders.*;
 
 public class firstplugin extends JavaPlugin {
 
+    private boolean blockProtection = false;
+
+    public boolean isBlockProtectionEnabled() {
+        return blockProtection;
+    }
+
+    public void setBlockProtectionStatus(boolean status) {
+        this.blockProtection = status;
+    }
+
     private void registerListeners() {
         @NotNull PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new MainListener(), this);
@@ -27,6 +37,8 @@ public class firstplugin extends JavaPlugin {
         getCommand("testplaceholders").setExecutor(new PapiTestCommand(this));
         getCommand("killgui").setExecutor(new KillCommand());
         getCommand("skin").setExecutor(new SkinChangeCommand());
+        getCommand("vanish").setExecutor(new VanishCommand());
+        getCommand("blockpro").setExecutor(new BlockProtectionCommand(this));
     }
 
     public void registerCustomPlaceholders() {

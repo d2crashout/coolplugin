@@ -36,6 +36,13 @@ commands:
     description: Change your skin
     usage: /skin <playername>
 
+  vanish:
+    description: Vanish yourself or any player
+    permission: "firstplugin.vanish"
+
+  blockpro:
+    description: Allows you to disable or enable block protection
+    permission: "firstplugin.breakblocks"
 
 permissions:
   firstplugin.breakblocks:
@@ -52,4 +59,8 @@ permissions:
 
   firstplugin.fly:
     description: Allows you to use the /fly command
+    default: op
+
+  firstplugin.vanish:
+    description: Allows you to use the /vanish command
     default: op

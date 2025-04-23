@@ -14,11 +14,11 @@ public class BlockBreakListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         final Player player = event.getPlayer();
-
-        if (!player.hasPermission("myplugin.breakblocks")) {
-            player.sendMessage(ChatColor.RED + "You can't break blocks here!");
-            event.setCancelled(true);
-
+        if (plugin.isBlockProtectionEnabled()) {
+            if (!player.hasPermission("myplugin.breakblocks")) {
+                player.sendMessage(ChatColor.RED + "You can't break blocks here!");
+                event.setCancelled(true);
+            }
         }
     }
 }
