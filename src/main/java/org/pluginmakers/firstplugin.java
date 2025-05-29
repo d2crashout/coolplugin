@@ -1,6 +1,13 @@
 package org.pluginmakers;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -41,6 +48,25 @@ public class firstplugin extends JavaPlugin {
         getCommand("blockpro").setExecutor(new BlockProtectionCommand(this));
     }
 
+    private void registerRecipes() {
+        final ItemStack diamond = new ItemStack(Material.DIAMOND);
+        final ItemMeta dMeta = diamond.getItemMeta();
+        dMeta.displayName(Component.text("Special Diamond", NamedTextColor.DARK_PURPLE));
+        diamond.setItemMeta(dMeta);
+
+        final NamespacedKey key = new NamespacedKey(this, "special_diamond");
+        final ShapedRecipe recipe = new ShapedRecipe(key, diamond);
+        recipe.shape(
+                "GGG",
+                "GIG",
+                "GGG"
+        );
+
+        recipe.setIngredient('G', Material.GOLD_INGOT);
+        recipe.setIngredient('I', Material.IRON_INGOT);
+        Bukkit.addRecipe(recipe);
+    }
+
     public void registerCustomPlaceholders() {
         new DateTimePlaceholder(this).register();
     }
@@ -65,6 +91,8 @@ public class firstplugin extends JavaPlugin {
         registerListeners();
         registerCommands();
         registerCustomPlaceholders();
+        registerRecipes();
+
 
         if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI") || papi == null || !papi.isEnabled()) {
             // Here is PAPI is not on the server
